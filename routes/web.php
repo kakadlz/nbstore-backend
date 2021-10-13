@@ -20,6 +20,7 @@ Route::get('/', [Dashboardcontroller::class, 'index'])->name('dashboard');
 Auth::routes(['register'=>false]);
 
 Route::get('/products', [productcontroller::class, 'index'])->name('products');
+Route::get('/productscreate', [productcontroller::class, 'create'])->name('products.create');
 Route::post('/products', [productcontroller::class, 'store'])->name('products.store');
 Route::get('/products/{id}', [productcontroller::class, 'show'])->name('products.show');
 Route::get('/products/{id}/edit', [productcontroller::class, 'edit'])->name('products.edit');
