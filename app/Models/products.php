@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class product extends Model
+class products extends Model
 {
     use SoftDeletes;
     use HasFactory;
@@ -21,8 +21,8 @@ class product extends Model
         'quantity',
     ];
 
-    public function galleries(){
-        // return $this->hasMany(productgalleries::class,'products_id');
+    public function product_galleries(){
+        return $this->hasMany(product_galleries::class,'product_id');
 
     }
 }
