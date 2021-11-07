@@ -18,7 +18,7 @@ use App\Http\Controllers\productgalleriescontroller;
 Route::get('/', [Dashboardcontroller::class, 'index'])->name('dashboard');
 
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 
 
 Route::get('/products', [productscontroller::class, 'index'])->name('products');
