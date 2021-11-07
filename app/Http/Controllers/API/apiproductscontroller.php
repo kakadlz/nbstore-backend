@@ -20,11 +20,45 @@ class apiproductscontroller extends Controller
         if($id){
             $products=products::with('product_galleries')->find($id);
 
-            if($products){
+            if($products)
                 return ResponseFormatter::success($products,'Data berhasil di ambil');
-            }else{
+            else
                 return ResponseFormatter::success(null,'Data tidak ditemukan',404);
-            }
+
         }
+
+
+        if($slug){
+            $products=products::with('product_galleries')->where('slug',$slug)->first();
+
+            if($products)
+                return ResponseFormatter::success($products,'Data berhasil di ambil');
+            else
+                return ResponseFormatter::success(null,'Data tidak ditemukan',404);
+
+        }
+
+        $products=products::with('product_galleries');
+
+
+        if($name)
+            $products=products::with('product_galleries')->where('name','like','%'.$name.'%')->first();
+
+
+        if($type)
+        $products=products::with('product_galleries')->where('type','like','%'.$type.'%')->first();
+
+
+        if($price_from)
+        $products=products::with('product_galleries')->where('price','>=',$price_from)->first();
+
+
+        if($price_to)
+        $products=products::with('product_galleries')->where('price','<=',$price_to)->first();
+
+        return ResponseFormatter::success(
+            $products->paginate($limit),
+            'Data berhasil diambil'
+        );
     }
 }

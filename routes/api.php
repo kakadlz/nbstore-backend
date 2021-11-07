@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\apicheckoutscontroller;
 use App\Http\Controllers\API\apiproductscontroller;
+use App\Http\Controllers\API\apitransactionscontroller;
+use App\Http\Controllers\API\ResponseFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/products', [apiproductscontroller::class, 'all'])->name('api.products.index');
+Route::post('/checkout', [apicheckoutscontroller::class, 'checkout'])->name('api.checkout.checkout');
+Route::get('/transactions/{id}', [apitransactionscontroller::class, 'get'])->name('api.transactions.get');
+
+

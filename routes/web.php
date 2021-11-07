@@ -52,3 +52,11 @@ Route::get('/transactions/setstatus/{id}', [transactioncontroller::class, 'setSt
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/token', function (Request $request) {
+    // $token = $request->session()->token();
+
+    $token = csrf_token();
+
+   return $token;
+});
