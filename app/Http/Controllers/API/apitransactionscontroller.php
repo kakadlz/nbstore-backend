@@ -16,4 +16,12 @@ class apitransactionscontroller extends Controller
         else
             return ResponseFormatter::error(null,'Data tidak ditemukan',404);
     }
+    // public function get(Request $request,$id){
+    //     $product = transactions::with('details.products')->find($id);
+
+    //     if($product)
+    //         return ResponseFormatter::success($product,'Data berhasil diambil');
+    //     else
+    //         return ResponseFormatter::error(null,'Data tidak ditemukan',404);
+    // }
 }
