@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboardcontroller;
 use App\Http\Controllers\productscontroller;
 use App\Http\Controllers\productgalleriescontroller;
+use App\Http\Controllers\transactioncontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ Route::put('/productgalleries/{id}', [productgalleriescontroller::class, 'update
 Route::delete('/productgalleries/{id}', [productgalleriescontroller::class, 'destroy'])->name('productgalleries.delete');
 
 
+Route::get('/transactions', [transactioncontroller::class, 'index'])->name('transactions.index');
+Route::get('/transactions/show/{id}', [transactioncontroller::class, 'show'])->name('transactions.show');
+Route::get('/transactions/edit/{id}', [transactioncontroller::class, 'edit'])->name('transactions.edit');
+Route::put('/transactions/edit/{id}/update', [transactioncontroller::class, 'update'])->name('transactions.update');
+Route::delete('/transactions/delete/{id}', [transactioncontroller::class, 'destroy'])->name('transactions.delete');
+Route::get('/transactions/setstatus/{id}', [transactioncontroller::class, 'setStatus'])->name('transactions.status');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();

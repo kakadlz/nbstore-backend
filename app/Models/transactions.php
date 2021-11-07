@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class transaction extends Model
+class transactions extends Model
 {
     use SoftDeletes;
     use HasFactory;
-    protected $table='transaction';
+    protected $table='transactions';
 
     protected $fillable=[
         'uuid',

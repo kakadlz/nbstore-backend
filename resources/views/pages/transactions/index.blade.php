@@ -31,9 +31,9 @@
                                             <td>{{$data->number}}</td>
                                             <td>${{$data->transaction_total}}</td>
                                             <td>
-                                                @if($data->transaction_status=>'PENDING')
+                                                @if($data->transaction_status=='PENDING')
                                                     <span class="badge badge-info">
-                                                @elseif($data->transaction_status=>'SUCCESS')
+                                                @elseif($data->transaction_status=='SUCCESS')
                                                 <span class="badge badge-success">
                                                 @else
                                                     <span class="badge badge-danger">
@@ -44,11 +44,16 @@
                                                 </span>
                                             </td>
                                             <td>
-                                                @if($data->transaction_status=>'PENDING')
-                                                {{-- <a href="{{route('transactions.status',$data->id)}}?status=SUCCESS" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
-                                                <a href="{{route('transactions.status',$data->id)}}?status=FAILED" class="btn btn-success btn-sm"><i class="fa fa-times"></i></a> --}}
+                                                @if($data->transaction_status=='PENDING')
+                                                <a href="{{route('transactions.status',$data->id)}}?status=SUCCESS" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
+                                                <a href="{{route('transactions.status',$data->id)}}?status=FAILED" class="btn btn-warning btn-sm"><i class="fa fa-times"></i></a>
                                                 @endif
-                                                <a href="{{route('transactions.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a href="#mymodal"
+                                                data-remote="{{route('transactions.show',$data->id)}}"
+                                                data-toggle="modal"
+                                                data-targe="#mymodal"
+                                                data-title="Detail Transaksi {{$data->uuid}}"
+                                                class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
 
                                                 <a href="{{route('transactions.edit',$data->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
                                                 <form action="{{route('transactions.delete',$data->id)}}" method="post" class="d-inline">

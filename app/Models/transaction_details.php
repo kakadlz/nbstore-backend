@@ -20,8 +20,8 @@ class transaction_details extends Model
 
     ];
 
-    public function transaction(){
-        return $this->belongsTo(transaction::class,'transactions_id');
+    public function transactions(){
+        return $this->belongsTo(transactions::class,'transactions_id');
     }
 
     public function products(){
